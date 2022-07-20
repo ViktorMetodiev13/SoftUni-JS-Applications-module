@@ -1,6 +1,14 @@
-function solve(a, b, c, d) {
-    let result = a + b + c + d;
-    console.log(result);
+function solve() {
+    let person = {
+        firstName: "Peter",
+        lastName: "Peterson",
+        age: "18",
+        salary: "7000$"
+    }
+
+    for (const key in person) {
+        console.log(key);
+    }
 }
 
-solve(1, 2, 3, 4);
+solve();
