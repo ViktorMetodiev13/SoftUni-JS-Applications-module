@@ -22,6 +22,8 @@ async function loadRepos() {
 			list.appendChild(li);
 		}
 	} catch (error) {
-		list.innerHTML = `${error.message}`;
+		let li = document.createElement('li');
+		li.textContent = `${error.message}`;
+		list.appendChild(li);
 	}
 }
