@@ -11,14 +11,15 @@ async function loadRepos() {
 
 		let data = await response.json();
 
-		list.innerHTML = '';
+		list.textContent = '';
 
 		for (let repo of data) {
-			list.innerHTML += `<li>
-				<a href="${repo.html_url}" target="_blank">
-					${repo.full_name}
-				</a>
-			</li>`;
+			let li = document.createElement('li');
+			let a = document.createElement('a');
+			a.href = repo.html_url;
+			a.textContent = repo.full_name;
+			li.appendChild(a);
+			list.appendChild(li);
 		}
 	} catch (error) {
 		list.innerHTML = `${error.message}`;
