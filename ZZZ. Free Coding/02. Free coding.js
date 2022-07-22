@@ -1,13 +1,22 @@
 function solve() {
-    let person = {
-        firstName: "Peter",
-        lastName: "Peterson",
-        age: "18",
-        salary: "7000$"
+    let people = {
+        person1: {
+            firstName: "Peter",
+            lastName: "Peterson",
+            age: "18",
+            salary: "7000$"
+        }
     }
 
-    for (const key in person) {
-        console.log(key);
+    people[person2] = {
+        firstName: "Ivan",
+        lastName: "Venelinov",
+        age: "29",
+        salary: "3000$"
+    }
+
+    for (const person in people) {
+        console.log(`${person} - ${people[person]}`);
     }
 }
 
