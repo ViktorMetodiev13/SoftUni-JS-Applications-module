@@ -1,5 +1,9 @@
-function sumThreeNums(a, b, c) {
-    return a + b + c;
+let arr = [1, 2, 3, 4, 5];
+
+function solve() {
+    arr.unshift(6);
+
+    console.log(arr);
 }
 
-console.log(sumThreeNums(1, 2, 3));
+solve()

@@ -1,3 +1,11 @@
-let arr = ['a', 'b', 'c'];
+async function solve() {
 
-console.log(arr.length);
+    let url = 'http://localhost:3030';
+
+    let res = await fetch(url);
+    let data = await res.json();
+
+    console.log(data);
+}
+
+solve()
