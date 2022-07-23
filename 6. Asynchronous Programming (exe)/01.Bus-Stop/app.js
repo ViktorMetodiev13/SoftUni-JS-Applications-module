@@ -1,25 +1,24 @@
-function getInfo() {
+async function getInfo() {
     let baseUrl = 'http://localhost:3030/jsonstore/bus/businfo';
     let inputField = document.getElementById('stopId');
     let ulElement = document.getElementById('buses');
     let divElement = document.getElementById('stopName');
-    
-    fetch(`${baseUrl}/${inputField.value}`)
-        .then(res => res.json())
-        .then(data => {
-            let buses = data.buses;
-            let name = data.name;
-            
-            divElement.textContent = name;
-            ulElement.innerHTML = '';
-            Object.keys(buses).forEach(bus => {
-                let li = document.createElement('li');
-                li.textContent = `Bus ${bus} arrives in ${buses[bus]} minutes`;
-                ulElement.appendChild(li);
-            })
-            
-        })
-        // .catch(err => {
-        //     divElement.textContent = 'Error';
-        // })
+
+    try {
+        let res = await fetch(`${baseUrl}/${inputField.value}`);
+        let data = await res.json();
+
+        let name = data.name;
+        let buses = data.buses;
+
+        divElement.textContent = name;
+
+        for (const bus in buses) {
+            let liElement = document.createElement('li');
+            liElement.textContent = `Bus ${bus} arrives in ${buses[bus]} minutes`;
+            ulElement.appendChild(liElement);
+        }
+    } catch (error) {
+        divElement.textContent = 'Error';
+    }
 }
