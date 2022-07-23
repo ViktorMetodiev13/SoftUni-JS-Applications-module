@@ -14,7 +14,7 @@ function getInfo() {
 
             console.log(buses);
         })
-        // .catch(err => {
-        //     divElement.textContent = 'Error';
-        // })
+        .catch(err => {
+            divElement.textContent = 'Error';
+        })
 }
