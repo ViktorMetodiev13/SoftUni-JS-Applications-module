@@ -1,4 +1,4 @@
-function attachEvents() {
+async function attachEvents() {
     let inputElement = document.getElementById('location').value;
     let getButton = document.getElementById('submit');
     let forecast = document.getElementById('forecast');
@@ -19,11 +19,14 @@ function attachEvents() {
     let divElementUpcoming = document.createElement('div');
     let divElementCurrent = document.createElement('div');
 
-    getButton.addEventListener('click', (e) => {
+    
+    getButton.addEventListener('click', async (e) => {
         divElementUpcoming.innerHTML = '';
         divElementCurrent.innerHTML = '';
-
         
+        let res = await fetch(`${baseUrl}/${inputElement}`);
+        let data = await res.json();
+        console.log(data);
     });
 
     
