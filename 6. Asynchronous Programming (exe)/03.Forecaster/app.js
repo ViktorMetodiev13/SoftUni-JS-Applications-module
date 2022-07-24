@@ -26,7 +26,6 @@ async function attachEvents() {
         
         let res = await fetch(`${baseUrl}/${inputElement}`);
         let data = await res.json();
-        console.log(data);
     });
 
     

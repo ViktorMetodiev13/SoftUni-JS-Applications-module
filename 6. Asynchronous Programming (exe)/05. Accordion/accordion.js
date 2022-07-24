@@ -1,3 +1,3 @@
 function solution() {
-    //TODO .....
+    let main = document.getElementById('main');
 }
