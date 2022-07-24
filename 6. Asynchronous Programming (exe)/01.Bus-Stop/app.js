@@ -1,13 +1,11 @@
 async function getInfo() {
-    let baseUrl = 'http://localhost:3030/jsonstore/bus/businfo/';
+    let baseUrl = 'http://localhost:3030/bus/businfo';
     let inputField = document.getElementById('stopId');
     let ulElement = document.getElementById('buses');
     let divElement = document.getElementById('stopName');
 
     try {
-        const res = await fetch(`${baseUrl}${inputField.value}`);
-        console.log(res.status);
-        
+        const res = await fetch(`${baseUrl}/${inputField.value}`);
         const data = await res.json();
 
         let name = data.name;
@@ -24,5 +22,4 @@ async function getInfo() {
         console.log(`Error`);
     }
 
-    let test = await fetch(`http://localhost:3030/jsonstore/bus/businfo/`);
 }
