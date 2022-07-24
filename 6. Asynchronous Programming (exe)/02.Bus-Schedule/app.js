@@ -8,13 +8,22 @@ function solve() {
         next: 'Depot'
     }
 
+    let url = `http://localhost:3030/jsonstore/bus/schedule/${busStop.next}`;
     function depart() {
         departBtn.disabled = true;
-        infoElement.textContent = busStop.next;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                busStop = JSON.parse(JSON.stringify(data));
+                infoElement.textContent = `Next stop ${busStop.name}`;
+            })
+        arriveBtn.disabled = false;
     }
 
     function arrive() {
-        console.log('Arrive TODO...');
+        infoElement.textContent = `Arriving at ${busStop.next}`;
+
+        departBtn.disabled = false;
     }
 
     return {
