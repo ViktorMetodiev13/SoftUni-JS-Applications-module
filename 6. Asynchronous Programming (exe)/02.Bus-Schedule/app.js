@@ -8,10 +8,9 @@ function solve() {
         next: 'Depot'
     }
 
-    let url = `${baseUrl}/${busStop.next}`;
     function depart() {
         departBtn.disabled = true;
-        fetch(url)
+        fetch(`${baseUrl}/${busStop.next}`)
             .then(res => res.json())
             .then(data => {
                 busStop = data;
