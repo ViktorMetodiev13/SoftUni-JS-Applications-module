@@ -11,7 +11,7 @@ function solve() {
     function depart() {
         departBtn.disabled = true;
         fetch(`${baseUrl}/${busStop.next}`)
-            .then(res => res.json())
+            .then(res => console.log(res.json()))
             .then(data => {
                 busStop = data;
                 infoElement.textContent = `Next stop ${busStop.name}`;
