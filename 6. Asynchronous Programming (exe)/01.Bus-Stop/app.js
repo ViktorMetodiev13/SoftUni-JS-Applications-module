@@ -1,5 +1,5 @@
 async function getInfo() {
-    let baseUrl = 'http://localhost:3030/bus/businfo';
+    let baseUrl = 'http://localhost:3030/jsonstore/bus/businfo';
     let inputField = document.getElementById('stopId');
     let ulElement = document.getElementById('buses');
     let divElement = document.getElementById('stopName');
@@ -19,7 +19,7 @@ async function getInfo() {
             ulElement.appendChild(liElement);
         }
     } catch (error) {
-        console.log(`Error`);
+        divElement.textContent = `Error`;
     }
 
 }

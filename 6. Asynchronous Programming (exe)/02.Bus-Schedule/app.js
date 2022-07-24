@@ -8,7 +8,7 @@ function solve() {
         next: 'Depot'
     }
 
-    let url = `http://localhost:3030/jsonstore/bus/schedule/${busStop.next}`;
+    let url = `${baseUrl}/${busStop.next}`;
     function depart() {
         departBtn.disabled = true;
         fetch(url)
