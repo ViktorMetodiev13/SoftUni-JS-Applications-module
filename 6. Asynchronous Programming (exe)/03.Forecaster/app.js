@@ -1,5 +1,32 @@
 function attachEvents() {
-    console.log("TODO...");
+    let inputElement = document.getElementById('location').value;
+    let getButton = document.getElementById('submit');
+    let forecast = document.getElementById('forecast');
+    let currentDiv = document.getElementById('current');
+    let upcomingDiv = document.getElementById('upcoming');
+    let baseUrl = 'http://localhost:3030/jsonstore/forecaster'
+    
+    let weatherIcons = {
+        sunny: '&#x2600',
+        partlySunny: '&#x26C5',
+        overcast: '&#x2601',
+        rain: '&#x2614',
+        degress: '&#176'
+    }
+    
+    let code = '';
+
+    let divElementUpcoming = document.createElement('div');
+    let divElementCurrent = document.createElement('div');
+
+    getButton.addEventListener('click', (e) => {
+        divElementUpcoming.innerHTML = '';
+        divElementCurrent.innerHTML = '';
+
+        
+    });
+
+    
 }
 
 attachEvents();

@@ -1,4 +1,4 @@
-async function solve() {
+function solve() {
     let baseUrl = 'http://localhost:3030/jsonstore/bus/schedule';
     let infoElement = document.querySelector('.info');
     let departBtn = document.getElementById('depart');
@@ -8,19 +8,22 @@ async function solve() {
         next: 'Depot'
     }
 
-    async function depart() {
-        let url = `http://localhost:3030/jsonstore/bus/schedule/${busStop.next}`;
-        let res = await fetch(url);
-        let data = await res.json();
+    let url = `http://localhost:3030/jsonstore/bus/schedule/${busStop.next}`;
+    function depart() {
         departBtn.disabled = true;
-
-        busStop = JSON.parse(JSON.stringify(data));
-        infoElement.textContent = `Next Stop ${busStop.name}`;
+        fetch(url)
+            .then(res => res.json())
+            .then(data => {
+                busStop = data;
+                infoElement.textContent = `Next stop ${busStop.name}`;
+            })
         arriveBtn.disabled = false;
     }
 
-    async function arrive() {
-        
+    function arrive() {
+        infoElement.textContent = `Arriving at ${busStop.name}`;
+        departBtn.disabled = false;
+        arriveBtn.disabled = true;
     }
 
     return {
