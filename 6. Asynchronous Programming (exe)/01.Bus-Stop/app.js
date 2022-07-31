@@ -5,6 +5,7 @@ async function getInfo() {
     let divElement = document.getElementById('stopName');
 
     try {
+        ulElement.textContent = '';
         const res = await fetch(`${baseUrl}/${inputField.value}`);
         const data = await res.json();
 
