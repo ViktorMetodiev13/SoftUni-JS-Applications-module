@@ -2,25 +2,8 @@ function attachEvents() {
     const baseUrl = 'http://localhost:3030/jsonstore/phonebook';
     document.querySelector('#btnLoad').addEventListener('click', onLoad);
     document.querySelector('#btnCreate').addEventListener('click', onCreate);
+    document.getElementById('phonebook').addEventListener('click', remove)
     let phonebook = document.querySelector('#phonebook');
-
-    async function onCreate() {
-        let personField = document.querySelector('#person').value;
-        let phoneField = document.querySelector('#phone').value;
-
-        const res = await fetch(baseUrl, {
-            method: "post",
-            headers: {
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify({
-                person: personField.trim(),
-                phone: phoneField.trim()
-            })
-        })
-
-        onload();
-    }
 
     async function onLoad() {
         try {
@@ -37,6 +20,7 @@ function attachEvents() {
                 liElement.textContent = `${p.person}: ${p.phone}`;
                 let buttonDelete = document.createElement('button');
                 buttonDelete.textContent = 'Delete';
+                buttonDelete.setAttribute('id', p._id); 
                 liElement.appendChild(buttonDelete);
                 phonebook.appendChild(liElement);
             })
@@ -46,8 +30,46 @@ function attachEvents() {
         }   
     }
 
-    async function remove() {
+    async function onCreate() {
+        let personField = document.querySelector('#person').value;
+        let phoneField = document.querySelector('#phone').value;
 
+        try {
+            await fetch(baseUrl, {
+                method: "post",
+                headers: {
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify({
+                    person: personField.trim(),
+                    phone: phoneField.trim()
+                })
+            });
+
+        } catch (error) {
+            alert(error.message);
+        }
+
+        personField.textContent = '';
+        phoneField.textContent = '';
+
+        onLoad();
+    }
+
+    async function remove(e) {
+        let currentId = e.target.id;
+
+        if (e.target.textContent == 'Delete') {
+            try {
+                await fetch(`${baseUrl}/${currentId}`, {
+                    method: 'DELETE'
+                });
+
+                onLoad()
+            } catch (error) {
+                alert(error.message);
+            }
+        }
     }
 }
 

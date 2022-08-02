@@ -26,6 +26,7 @@ function attachEvents() {
             let nameField = document.querySelector('[name="author"]').value;
             let messageField = document.querySelector('[name="content"]').value;
 
+            nameField.textArea = '';
             const res = await fetch(baseUrl, {
                 method: 'post',
                 headers: {
