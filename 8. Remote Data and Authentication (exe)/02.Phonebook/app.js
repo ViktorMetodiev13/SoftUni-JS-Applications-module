@@ -5,7 +5,21 @@ function attachEvents() {
     let phonebook = document.querySelector('#phonebook');
 
     async function onCreate() {
+        let personField = document.querySelector('#person').value;
+        let phoneField = document.querySelector('#phone').value;
 
+        const res = await fetch(baseUrl, {
+            method: "post",
+            headers: {
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify({
+                person: personField.trim(),
+                phone: phoneField.trim()
+            })
+        })
+
+        onload();
     }
 
     async function onLoad() {
@@ -29,8 +43,7 @@ function attachEvents() {
 
         } catch (error) {
             alert(error.message);
-        }
-        
+        }   
     }
 
     async function remove() {
