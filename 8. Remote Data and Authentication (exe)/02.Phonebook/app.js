@@ -50,9 +50,6 @@ function attachEvents() {
             alert(error.message);
         }
 
-        personField.textContent = '';
-        phoneField.textContent = '';
-
         onLoad();
     }
 

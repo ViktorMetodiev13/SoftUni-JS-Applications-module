@@ -2,7 +2,7 @@ function attachEvents() {
     let baseUrl = 'http://localhost:3030/jsonstore/messenger';
     document.querySelector('#refresh').addEventListener('click', displayComments);
     document.querySelector('#submit').addEventListener('click', createComment);
-    
+
     async function displayComments() {
         try {
             let res = await fetch(baseUrl);
@@ -20,13 +20,12 @@ function attachEvents() {
             alert(error.messsage);
         }
     }
-    
+
     async function createComment() {
         try {
             let nameField = document.querySelector('[name="author"]').value;
             let messageField = document.querySelector('[name="content"]').value;
 
-            nameField.textArea = '';
             const res = await fetch(baseUrl, {
                 method: 'post',
                 headers: {
@@ -41,6 +40,7 @@ function attachEvents() {
             alert('Wrong input, try again');
         }
         displayComments();
+
     }
 }
 
