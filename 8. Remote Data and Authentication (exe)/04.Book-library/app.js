@@ -32,14 +32,25 @@ async function loadBooks() {
             let deleteAndEditTD = document.createElement('td');
             let deleteBtn = document.createElement('button');
             let editBtn = document.createElement('button');
-            deleteBtn.textContent = 'Delete';
             editBtn.textContent = 'Edit';
+            deleteBtn.textContent = 'Delete';
+            deleteBtn.addEventListener('click', remove);
             deleteAndEditTD.appendChild(editBtn);
             deleteAndEditTD.appendChild(deleteBtn);
 
             trElement.appendChild(deleteAndEditTD);
 
             tbodyElement.appendChild(trElement);
+
+            function remove(e) {
+                e.preventDefault();
+
+                fetch(`${baseUrl}/${key}`, {
+                    method: 'DELETE'
+                })
+
+                trElement.remove()
+            }
         }
     } catch (error) {
         alert(error.message);
