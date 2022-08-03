@@ -5,6 +5,7 @@ let tbodyElement = document.getElementsByTagName('tbody')[0];
 let formElement = document.getElementsByTagName('form')[0];
 
 document.getElementById('loadBooks').addEventListener('click', loadBooks);
+document.getElementsByTagName('button')[5].addEventListener('click', createBook);
 
 async function loadBooks() {
     try {
@@ -57,15 +58,39 @@ async function loadBooks() {
     }
 }
 
-async function createBook() {
+async function createBook(e) {
+    e.preventDefault();
 
+    let dataForm = new FormData(formElement);
+    let infoArr = [...dataForm.values()];
+
+    try {
+        let res = await fetch(baseUrl, {
+            method: 'POST',
+            headers: {
+                'Content-type': 'application/json'
+            },
+            body: JSON.stringify({
+                title: infoArr[0],
+                author: infoArr[1]
+            })
+        })
+
+        if (res.status != 200) {
+            throw new Error('Error occurred!');
+        }
+
+        loadBooks();
+
+        infoArr[0].textContent = '';
+        infoArr[1].textContent = '';
+    } catch (error) {
+        alert('Error in the new record');
+    }
 }
 
 async function updateBook() {
 
 }
 
-async function remove() {
-
-}
 
