@@ -60,7 +60,7 @@ async function loadBooks() {
                 try {
                     let res = await fetch(`${baseUrl}/${key}`);
                     if (res.status != 200) {
-                        throw new Error('Error occurred!')
+                        throw new Error('Error occurred!');
                     }
 
                     let data = await res.json();
