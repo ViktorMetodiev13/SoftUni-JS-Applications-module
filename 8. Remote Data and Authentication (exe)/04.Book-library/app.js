@@ -36,6 +36,7 @@ async function loadBooks() {
             editBtn.textContent = 'Edit';
             deleteBtn.textContent = 'Delete';
             deleteBtn.addEventListener('click', remove);
+            editBtn.addEventListener('click', updateRow)
             deleteAndEditTD.appendChild(editBtn);
             deleteAndEditTD.appendChild(deleteBtn);
 
@@ -51,6 +52,21 @@ async function loadBooks() {
                 })
 
                 trElement.remove()
+            }
+
+            function updateRow(e) {
+                e.preventDefault();
+
+                fetch(`${baseUrl}/${key}`, {
+                    method: 'put',
+                    headers: {
+                        'Content-type': 'application/json'
+                    },
+                    body: JSON.stringify({
+                        'author': author,
+                        'title': title,
+                    })
+                })
             }
         }
     } catch (error) {
@@ -82,15 +98,11 @@ async function createBook(e) {
 
         loadBooks();
 
-        infoArr[0].textContent = '';
-        infoArr[1].textContent = '';
+        
     } catch (error) {
         alert('Error in the new record');
     }
 }
 
-async function updateBook() {
-
-}
 
 
