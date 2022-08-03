@@ -19,7 +19,7 @@ async function loadBooks() {
         console.log(Object.entries(data));
         tbodyElement.innerHTML = '';
 
-        for (const [key, {author, title}] of entries) {
+        for (const [key, { author, title }] of entries) {
             let trElement = document.createElement('tr');
 
             let titleElement = document.createElement('td');
@@ -54,37 +54,44 @@ async function loadBooks() {
                 trElement.remove()
             }
 
-            //DOESN'T WORK NEEDS IMPROVEMENT
             async function edit(e) {
                 e.preventDefault();
 
-                let res = await fetch(`${baseUrl}/${key}`);
-                let data = await res.json();
+                try {
+                    let res = await fetch(`${baseUrl}/${key}`);
+                    if (res.status != 200) {
+                        throw new Error('Error occurred!')
+                    }
 
-                let titleField = document.querySelector('[name="title"]');
-                let authorField = document.querySelector('[name="author"]');
+                    let data = await res.json();
 
-                titleField.value = data.title;
-                authorField.value = data.author;
+                    let titleField = document.querySelector('[name="title"]');
+                    let authorField = document.querySelector('[name="author"]');
 
-                fetch(`${baseUrl}/${key}`, {
-                    method: 'post',
-                    headers: {
-                        'Content-type': 'application/json',
-                    },
-                    body: JSON.stringify({
-                        title: titleField.value,
-                        author: authorField.value,
+                    titleField.value = data.title;
+                    authorField.value = data.author;
+
+                    fetch(`${baseUrl}/${key}`, {
+                        method: 'post',
+                        headers: {
+                            'Content-type': 'application/json',
+                        },
+                        body: JSON.stringify({
+                            title: titleField.value,
+                            author: authorField.value,
+                        })
                     })
-                })
 
-                fetch(`${baseUrl}/${key}`, {
-                    method: 'DELETE'
-                })
+                    fetch(`${baseUrl}/${key}`, {
+                        method: 'DELETE'
+                    })
 
-                loadBooks()
+
+                } catch (error) {
+                    alert(error.message)
+                }
+
             }
-
         }
     } catch (error) {
         alert(error.message);
