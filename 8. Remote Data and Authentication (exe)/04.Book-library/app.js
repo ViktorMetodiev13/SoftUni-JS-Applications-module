@@ -36,7 +36,7 @@ async function loadBooks() {
             editBtn.textContent = 'Edit';
             deleteBtn.textContent = 'Delete';
             deleteBtn.addEventListener('click', remove);
-            editBtn.addEventListener('click', updateRow)
+            editBtn.addEventListener('click', edit)
             deleteAndEditTD.appendChild(editBtn);
             deleteAndEditTD.appendChild(deleteBtn);
 
@@ -54,20 +54,37 @@ async function loadBooks() {
                 trElement.remove()
             }
 
-            function updateRow(e) {
+            //DOESN'T WORK NEEDS IMPROVEMENT
+            async function edit(e) {
                 e.preventDefault();
 
+                let res = await fetch(`${baseUrl}/${key}`);
+                let data = await res.json();
+
+                let titleField = document.querySelector('[name="title"]');
+                let authorField = document.querySelector('[name="author"]');
+
+                titleField.value = data.title;
+                authorField.value = data.author;
+
                 fetch(`${baseUrl}/${key}`, {
-                    method: 'put',
+                    method: 'post',
                     headers: {
-                        'Content-type': 'application/json'
+                        'Content-type': 'application/json',
                     },
                     body: JSON.stringify({
-                        'author': author,
-                        'title': title,
+                        title: titleField.value,
+                        author: authorField.value,
                     })
                 })
+
+                fetch(`${baseUrl}/${key}`, {
+                    method: 'DELETE'
+                })
+
+                loadBooks()
             }
+
         }
     } catch (error) {
         alert(error.message);
@@ -97,8 +114,6 @@ async function createBook(e) {
         }
 
         loadBooks();
-
-        
     } catch (error) {
         alert('Error in the new record');
     }
