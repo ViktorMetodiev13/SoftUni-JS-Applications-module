@@ -1,1 +1,3 @@
-console.log(typeof 42.1);
+let response = await fetch(hostname, + url, options)
+
+console.log('hey', + 'hi', 'hello');
