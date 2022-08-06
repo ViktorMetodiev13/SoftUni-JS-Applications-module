@@ -1,6 +1,6 @@
-import { html, render } from "../node_modules/lit-html/lit-html.js";
+import { html, render } from "lit-html/lit-html.js.js.js";
 import { getUserData } from "./util.js";
-import { page } from "../node_modules/page/page.mjs";
+import { page } from "page/page.mjs.js.js";
 import { logout } from "./api.js";
 
 let root = document.getElementById('site-content');
