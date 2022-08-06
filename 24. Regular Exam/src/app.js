@@ -1,9 +1,9 @@
 import { html, render } from "../node_modules/lit-html/lit-html.js";
 import { getUserData } from "./util.js";
-import { page } from "../node_modules/page/page.mjs";
+//import { page } from "../node_modules/page/page.mjs";
 import { logout } from "./api.js";
 
-let root = document.getElementById('site-content');
+//let root = document.getElementById('site-content');
 
 function decorateContext(ctx, next) {
     ctx.render = (content) => render(content, root);
@@ -16,15 +16,15 @@ export function updateUserNav() {
     let userData = getUserData();
 
     if (userData == true) {
-        document.getElementById('user').style.display = 'inline-block';
-        document.getElementById('guest').style.display = 'none';
+        document.getElementsByClassName('user').style.display = 'inline-block';
+        document.getElementsByClassName('guest').style.display = 'none';
     } else {
-        document.getElementById('guest').style.display = 'inline-block';
-        document.getElementById('user').style.display = 'none';
+        document.getElementsByClassName('guest').style.display = 'inline-block';
+        document.getElementsByClassName('user').style.display = 'none';
     }
 }
 
-document.getElementById('logoutBtn').addEventListener('click', () => {
+document.getElementsByClassName('logoutBtn').addEventListener('click', () => {
     logout();
     updateUserNav();
     page.redirect('/');
