@@ -18,10 +18,10 @@ let template = (name, id, phoneNumber, email) => html`
 </div>`;
 
 let detailsTemplate = (id, phoneNumber, email) => html`
-    <div class="details" id=${id} style="display: none;">
-        <p>Phone number: ${phoneNumber}</p>
-        <p>Email: ${email}</p>
-    </div>`
+<div class="details" id=${id} style="display: none;">
+    <p>Phone number: ${phoneNumber}</p>
+    <p>Email: ${email}</p>
+</div>`
 
 
 start();
@@ -37,9 +37,5 @@ function start() {
 function showDetails(event) {
     event.preventDefault();
 
-    let contactsDiv = document.querySelector('#contacts');
-
-    const templateResult = Object.values(contacts)
-        .map(c => template(c.name, c.id, c.phoneNumber, c.email));
-    render(templateResult, contactsDiv);
+    
 }
