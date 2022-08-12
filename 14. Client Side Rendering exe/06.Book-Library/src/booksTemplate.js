@@ -1,5 +1,6 @@
 import { html, render } from "../node_modules/lit-html/lit-html.js";
 
+const baseUrl = 'http://localhost:3030/jsonstore/collections/books/';
 
 export const booksTemplate = (booksData) => html`
 ${booksData.map(b => html`
@@ -17,13 +18,20 @@ ${booksData.map(b => html`
 let addform = document.getElementById('add-form');
 let editForm = document.getElementById('edit-form');
 
-function edit(e) {
+async function edit(e) {
     e.preventDefault();
-
-    console.log(e.target.parentNode.parentNode);
 
     addform.style.display = 'none';
     editForm.style.display = 'block';
+
+    let row = [...e.target.parentNode.parentNode];
+    
+
+
+
+
+    addform.style.display = 'block';
+    editForm.style.display = 'none';
 }
 
 function del(e) {
