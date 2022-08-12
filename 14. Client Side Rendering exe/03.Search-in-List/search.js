@@ -4,7 +4,7 @@ import { towns } from "./towns.js";
 let cardTemplate = html`
 <ul>
    ${towns.map(item => {
-      return html `<li id=${item}>${item}</li>`;
+      return html `<li id=${item}>${item}</li>`
    })}
 </ul>
 `
