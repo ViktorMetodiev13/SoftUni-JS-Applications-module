@@ -14,6 +14,4 @@ document.getElementById('btnLoadTowns').addEventListener('click', (e) => {
 
     let root = document.getElementById('root');
     render(cardTemplate, root);
-
-    input.value = '';
 })
