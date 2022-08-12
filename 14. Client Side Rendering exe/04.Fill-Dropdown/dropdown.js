@@ -4,7 +4,6 @@ let baseUrl = 'http://localhost:3030/jsonstore/advanced/dropdown';
 async function getAllItems() {
     const res = await fetch(baseUrl);
     const data = await res.json();
-    console.log(data);
     return data;
 }
 
@@ -34,4 +33,5 @@ async function addItem(e) {
         render(cardTemplate, main)
     }
 
+    text.value = '';
 }
