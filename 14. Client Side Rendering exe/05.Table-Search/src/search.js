@@ -6,10 +6,10 @@ export function search() {
     input.value = '';
 
     for (const row of tableRows) {
-        row.classList.remove('select');
-
         if (row.textContent.toLowerCase().includes(searchterm.toLowerCase()) == true) {
             row.classList.add('select');
+        } else {
+            row.classList.remove('select');
         }
     }
 }

@@ -1,4 +1,4 @@
-import { html, render } from "../node_modules/lit-html/lit-html.js";
+import { html, render } from "../../06.Book-Library/node_modules/lit-html/lit-html.js";
 
 
 export const studentsTemplate = (studentsData) => html`
