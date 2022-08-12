@@ -4,6 +4,7 @@ let baseUrl = 'http://localhost:3030/jsonstore/advanced/dropdown';
 async function getAllItems() {
     const res = await fetch(baseUrl);
     const data = await res.json();
+    console.log(data);
     return data;
 }
 
@@ -26,9 +27,11 @@ async function addItem(e) {
 
     let data = await res.json();
 
+    items.push(data)
+
     if (res.ok == true) {
-        let cardTemp = html`<option value=${data._id}>${data.text}</option>`
-        render(cardTemp, main)
+        cardTemplate = html`${items.map(item => html`<option value=${item._id}>${item.text}</option>`)}`
+        render(cardTemplate, main)
     }
 
 }
