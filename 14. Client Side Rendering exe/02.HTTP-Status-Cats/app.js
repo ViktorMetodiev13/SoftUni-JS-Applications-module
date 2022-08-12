@@ -20,6 +20,7 @@ function onClick(e) {
     e.preventDefault();
 
     let cat = e.target.parentNode;
+    console.log(cat);
     let result = cat.querySelector('.status').style.display;
 
     if (result == 'block') {
