@@ -37,5 +37,14 @@ function start() {
 function showDetails(event) {
     event.preventDefault();
 
-    
+    let contact = event.target.parentNode;
+    console.log(contact);
+    let result = contact.querySelector('.details').style.display;
+
+    if (result == 'block') {
+        contact.querySelector('.details').style.display = 'none';
+    } else {
+        contact.querySelector('.details').style.display = 'block';
+    }
+
 }
