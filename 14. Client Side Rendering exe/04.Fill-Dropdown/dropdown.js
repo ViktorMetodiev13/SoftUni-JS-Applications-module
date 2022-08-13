@@ -14,6 +14,7 @@ let main = document.getElementById('menu');
 render(cardTemplate, main);
 
 document.querySelector('input[type="submit"]').addEventListener('click', addItem);
+
 async function addItem(e) {
     e.preventDefault();
 

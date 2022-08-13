@@ -26,7 +26,7 @@ async function edit(e) {
 
     let row = [...e.target.parentNode.parentNode];
     
-
+    
 
 
 
