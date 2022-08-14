@@ -28,7 +28,6 @@ export function loginView() {
 
     async function onSubmit(event) {
         event.preventDefault();
-        console.log(event.target);
 
         const formData = new FormData(event.target);
 
