@@ -1,9 +1,10 @@
-import { html, render } from "../lib.js";
+import { html, render, page } from "../lib.js";
+import { login } from "../api/users.js";
 
 
-const viewTemplate = () => html`
+const loginTemplate = (onSubmit) => html`
 <section id="login">
-    <form id="login-form">
+    <form @submit=${onSubmit} id="login-form">
         <div class="container">
             <h1>Login</h1>
             <label for="email">Email</label>
@@ -21,7 +22,24 @@ const viewTemplate = () => html`
 export function loginView() {
     const main = document.querySelector('main');
 
-    const templateResult = viewTemplate();
+    const templateResult = loginTemplate(onSubmit);
 
     render(templateResult, main);
+
+    async function onSubmit(event) {
+        event.preventDefault();
+        console.log(event.target);
+
+        const formData = new FormData(event.target);
+
+        const email = formData.get('email').trim();
+        const password = formData.get('password').trim();
+
+        if (email == '' || password == '') {
+            return alert('All fields are required!')
+        }
+
+        await login(email, password);
+        page.redirect('/memes');
+    }
 }
