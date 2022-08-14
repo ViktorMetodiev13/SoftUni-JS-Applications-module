@@ -1,5 +1,6 @@
 import { html, render, page } from "../lib.js";
 import { login } from "../api/users.js";
+import { updateNav } from "../app.js";
 
 
 const loginTemplate = (onSubmit) => html`
@@ -39,6 +40,7 @@ export function loginView() {
         }
 
         await login(email, password);
+        updateNav();
         page.redirect('/memes');
     }
 }

@@ -1,5 +1,6 @@
 import { html, render, page } from "../lib.js";
 import { register } from "../api/users.js";
+import { updateNav } from "../app.js";
 
 
 const registerTemplate = (onSubmit) => html`
@@ -23,7 +24,7 @@ const registerTemplate = (onSubmit) => html`
             </div>
             <input type="submit" class="registerbtn button" value="Register">
             <div class="container signin">
-                <p>Already have an account?<a href="#">Sign in</a>.</p>
+                <p>Already have an account?<a href="/login">Sign in</a>.</p>
             </div>
         </div>
     </form>
@@ -56,6 +57,7 @@ export function registerView() {
         }
 
         await register(username, email, password, gender);
-        page.redirect('/memes')
+        updateNav();
+        page.redirect('/memes');
     }
 }
