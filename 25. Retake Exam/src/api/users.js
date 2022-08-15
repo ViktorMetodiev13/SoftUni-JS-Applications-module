@@ -1,5 +1,5 @@
-import { clearUserData, setUserData } from "../util";
-import { get, post } from "./api";
+import { clearUserData, setUserData } from "../util.js";
+import { get, post } from "./api.js";
 
 
 export async function login(email, password) {
