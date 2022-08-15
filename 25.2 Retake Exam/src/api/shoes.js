@@ -8,3 +8,7 @@ export async function getAllShoes() {
 export async function createShoe(shoe) {
     return post('/data/shoes', shoe);
 }
+
+export async function getshoeById(id) {
+    return get('/data/shoes/' + id);
+}

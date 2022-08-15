@@ -28,24 +28,24 @@ export function createView() {
 
     async function onSubmit(event) {
         event.preventDefault();
-        console.log(event.target);
-        // const formData = new FormData(event.target);
+        
+        const formData = new FormData(event.target);
 
-        // const shoe = {
-        //     brand: formData.get('brand'),
-        //     model: formData.get('model'),
-        //     imageUrl: formData.get('imageUrl'),
-        //     release: formData.get('release'),
-        //     designer: formData.get('designer'),
-        //     value: formData.get('value'),
-        // }
+        const shoe = {
+            brand: formData.get('brand'),
+            model: formData.get('model'),
+            imageUrl: formData.get('imageUrl'),
+            release: formData.get('release'),
+            designer: formData.get('designer'),
+            value: formData.get('value'),
+        }
 
-        // if (shoe.brand == '' || shoe.model == '' || shoe.imageUrl == '' || shoe.release == '' || shoe.designer == '' || shoe.value == '') {
-        //     return alert('All fields are required!');
-        // }
+        if (shoe.brand == '' || shoe.model == '' || shoe.imageUrl == '' || shoe.release == '' || shoe.designer == '' || shoe.value == '') {
+            return alert('All fields are required!');
+        }
 
-        // await createShoe(shoe);
-        // event.target.reset();
-        // page.redirect('/shoes');
+        await createShoe(shoe);
+        event.target.reset();
+        page.redirect('/shoes');
     }
 }

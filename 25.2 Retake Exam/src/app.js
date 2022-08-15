@@ -6,11 +6,15 @@ import { homeView } from "./views/home.js";
 import { loginView } from "./views/login.js";
 import { registerView } from "./views/register.js";
 import { createView } from "./views/create.js";
+import { detailsView } from "./views/details.js";
+
+import * as api from "./api/api.js";
+window.api = api;
 
 
 page('/', homeView);
 page('/shoes', catalogView);
-page('/shoes/:id', () => console.log('details'));
+page('/shoes/:id', detailsView);
 page('/edit/:id', () => console.log('edit'));
 page('/search', () => console.log('search'));
 page('/create', createView);
