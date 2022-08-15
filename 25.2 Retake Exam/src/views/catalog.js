@@ -1,6 +1,6 @@
 import { getAllShoes } from "../api/shoes.js";
 import { render, html } from "../lib.js";
-//import {  } from "../../images";
+
 
 const catalogTemplate = (shoes) => html`
 <section id="dashboard">

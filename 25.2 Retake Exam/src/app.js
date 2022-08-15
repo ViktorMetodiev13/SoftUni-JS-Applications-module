@@ -5,17 +5,15 @@ import { catalogView } from "./views/catalog.js";
 import { homeView } from "./views/home.js";
 import { loginView } from "./views/login.js";
 import { registerView } from "./views/register.js";
+import { createView } from "./views/create.js";
 
-import * as api from "./api/api.js";
-
-window.api = api;
 
 page('/', homeView);
 page('/shoes', catalogView);
 page('/shoes/:id', () => console.log('details'));
 page('/edit/:id', () => console.log('edit'));
 page('/search', () => console.log('search'));
-page('/create', () => console.log('create'));
+page('/create', createView);
 page('/login', loginView);
 page('/register', registerView);
 
