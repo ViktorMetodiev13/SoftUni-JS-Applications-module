@@ -1,3 +1,3 @@
-let response = await fetch(hostname, + url, options)
+let name = 'Thomas';
 
-console.log('hey' + 'hi', 'hello');
+console.log(name);
