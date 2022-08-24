@@ -1,4 +1,4 @@
-import { html, render } from "../lib.js";
+import { html, render } from "../lib";
 
 
 const homeTemplate = () => html`
