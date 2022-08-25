@@ -4,6 +4,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Button - Component</title>
+    <script src="app.js" type="module"></script>
 </head>
 <body>
     <template id="app-button">
@@ -41,6 +42,12 @@
             }
         </style>
         <button class="btn"></button>
+        <main>
+            <app-button text="Register" type="primary"></app-button>
+            <app-button text="Login" type="accent"></app-button>
+            <app-button text="Delete" type="warn"></app-button>
+        </main>
     </template>
+
 </body>
 </html>
